@@ -1,0 +1,18 @@
+{%  extends "base.html"  %}
+
+{%  block content  %}
+
+{%  if form.errors  %}
+    <p class = 'error'>Niepoprawne hasło bądź login</p>
+{%  endif  %}
+
+    <form action= '/accounts/auth/' method = 'post'>{%  csrf_token  %}
+        <label for='username'>Nazwa użytkownika</label>
+        <input type = 'text' name = 'username' value = '' id = 'username'>
+        <label for = 'password'>Hasło</label>
+        <input type = 'password' name = 'password' value = '' id = 'password'>
+        
+        <input type = 'submit' value = 'login'>
+    </form>
+    
+{%  endblock  %}
