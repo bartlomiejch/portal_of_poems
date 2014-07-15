@@ -1,0 +1,29 @@
+{%  extends "base.html"  %}
+
+{%  block sidebar  %}
+
+
+
+{%  endblock  %}
+
+
+{%  block content  %}
+	<div class='jumbotron'>
+
+	<h1>Wiersze,</h1>
+	<p>Tutaj możesz napisać i skomentować wiersze użytkowników, pisz :)</p>
+	</div>
+
+{%  for poem in poems  %}
+
+<div class='col-6 col-sm-6 col-lg-4'>
+<h2>{{  poem.title  }}</h2>	
+<p>{{  poem.text|lower  }}</p>
+<p>{{  poem.like  }} osób lubi ten wiersz.</p>
+
+<p><a class='btn btn-default' href="{%  url 'zostaw_komentarz.views.poem' poem.id %}">Zobacz cały</a></p>
+</div>
+
+{%  endfor  %}
+
+{%  endblock  %}
