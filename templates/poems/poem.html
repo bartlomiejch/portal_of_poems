@@ -1,0 +1,40 @@
+{%  extends "base.html"  %}
+
+
+{%  block sidebar  %}
+        	<ul>
+        		<li><a href="{%  url 'zostaw_komentarz.views.poems'  %}">Poems</a></li>
+        	</ul>
+{%  endblock  %}
+
+{%  block content  %}
+
+<h2>{{  poem.title  }}</h2>
+<p>{{  poem.text  }}</p>
+<p>{{  poem.like  }} osób lubi ten wiersz.</p>
+
+<a href="/poems/like/{{  poem.id  }}" class="btn btn-success btn-large active"><i class="icon-white icon-heart"></i> Lubię!</a>
+
+
+
+
+
+<form method="post" action="/comment/{{  poem.id  }}">
+	
+    <label for="title">Tytuł</label>
+	<p><input type="text" id="title"></p>
+	<label for="text">Komentarz</label>
+	<p><textarea id="text" rows="7" cols="50"></textarea></p>
+	<label for="nick">Nick</label>
+	<p><input id="nick" type="text"></p>
+	<input type="submit" class="btn btn-success btn-large" value="Zatwierdż"/>
+	
+
+
+
+
+</form>
+
+
+{%  endblock  %}
+
