@@ -1,10 +1,21 @@
+{%  extends "base.html"  %}
+{%  load bootstrap_toolkit  %}
+
+{%  block content  %}
+
+<h1>Social Poem</h1>
+
 <ul>
    {% for i in poetry %}
-       <li>{{ i.stropha }}</li>
+       <p>{{ i.stropha }}</p>
    {% endfor %}
 </ul>
-<form action = '/social_poem' method = 'post'>
+<form action = '/poems/social_poem/' method = 'post'>
 	{% csrf_token %}
-    {{ form.as_p }}
-    <input type = 'submit' value = 'send'>
+    <label for='title'>Dopisz strofę:</label>
+    <p><input type="text" name="strofa" id="title"></p>
+	<button type='submit' class='btn btn-primary'>Prześlij strofę</button>
 </form>
+
+
+{%  endblock  %}
