@@ -3,11 +3,15 @@
 
 {%  block sidebar  %}
         	<ul>
-        		<li><a href="{%  url 'zostaw_komentarz.views.poems'  %}">Poems</a></li>
+        		<li><a href="{%  url 'poems.views.poems'  %}">Poems</a></li>
         	</ul>
 {%  endblock  %}
 
 {%  block content  %}
+
+{%  if alert  %}
+    {{  alert  }}
+{%  endif  %}
 
 <h2>{{  poem.title  }}</h2>
 <p>{{  poem.text  }}</p>
@@ -19,22 +23,22 @@
 
 
 
-<form method="post" action="/comment/{{  poem.id  }}">
-	
+<form method="post" action="/poems/comment/{{  poem.id  }}/">{% csrf_token %}
+
     <label for="title">Tytuł</label>
-	<p><input type="text" id="title"></p>
+	<p><input type="text" name="title" id="title"></p>
 	<label for="text">Komentarz</label>
-	<p><textarea id="text" rows="7" cols="50"></textarea></p>
+	<p><textarea id="text" name="text_of_comment" rows="7" cols="50"></textarea></p>
 	<label for="nick">Nick</label>
-	<p><input id="nick" type="text"></p>
-	<input type="submit" class="btn btn-success btn-large" value="Zatwierdż"/>
+	<p><input id="nick" name="nick" type="text"></p>
+	<input type="submit" class="btn btn-success btn-large" value="Zatwierdź"/>
 	
-
-
-
-
 </form>
-
+{%  for comments in all_comments  %}
+    <h5>{{  comment.title  }}</h5>
+    <p>{{  comment.text  }}</p>
+    <p>{{  comment.nick  }}</p>
+{%  endfor  %}
 
 {%  endblock  %}
 
