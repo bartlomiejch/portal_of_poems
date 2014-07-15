@@ -1,0 +1,10 @@
+<ul>
+   {% for i in poetry %}
+       <li>{{ i.stropha }}</li>
+   {% endfor %}
+</ul>
+<form action = '/social_poem' method = 'post'>
+	{% csrf_token %}
+    {{ form.as_p }}
+    <input type = 'submit' value = 'send'>
+</form>
