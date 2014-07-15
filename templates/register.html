@@ -1,0 +1,18 @@
+{%  extends 'base.html'  %}
+
+{%  block content  %}
+
+    <h2>Rejestracja</h2>
+    <form action='/accounts/register/' method='post'>{%  csrf_token  %}
+    <label for="user">Login:</label>
+    <p><input id="user" name="login" type="text"></p>
+    <label for="cycki">Hasło:</label>
+    <p><input id="cycki" name="password"type="password"></p>
+    <label for="dupa">Powtórz Hasło:</label>
+    <p><input id="dupa" name="confirmed_password"type="password"></p>
+
+    <input type="submit" class="btn btn-success btn-large" value="Zatwierdź"/>
+
+    </form>
+
+{%  endblock  %}
