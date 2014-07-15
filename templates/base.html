@@ -26,17 +26,22 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="{%  url 'poems.views.poems'  %}">Home</a></li>
+			<li><a href="{%  url 'poems.views.poems'  %}">Home</a></li>
             <li><a href="{%  url 'poems.views.create'  %}">Napisz</a></li>
-            <li><a href="{%  url 'pensjonat.views.login'  %}">Zaloguj się</a></li>
-            <li><a href="{%  url 'pensjonat.views.register_user'  %}">Załóż konto</a></li>
+            <li><a href="{%  url 'clouds.views.login'  %}">Zaloguj się</a></li>
+            <li><a href="{%  url 'clouds.views.register_user'  %}">Załóż konto</a></li>
             <li><a href="{%  url 'poems.views.social_poem'  %}">Social poem</a></li>
+              <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="Szukaj">
+                </div>
+                <button type="submit" class="btn btn-default">OK</button>
+             </form>
             <!--<li><a href="#contact">Kontakt</a></li>-->
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </div><!-- /.navbar -->
-
     <div class='container'>
     	{%  block content  %}
 
