@@ -1,0 +1,27 @@
+{%  extends "base.html"  %}
+{%  load bootstrap_toolkit  %}
+
+{%  block sidebar  %}
+        	<ul>
+        		<li><a href="/poems/all">Wróć</a></li>
+        	</ul>
+{%  endblock  %}
+
+{%  block content  %}
+<h1>Napisz wiersz:</h1>
+
+<form action = '/poems/create/' method = 'post'>{%  csrf_token  %}
+    <label for='title'>Tytuł</label>
+    <p><input type="text" id="title"></p>
+	<label for="text">Tekst</label>
+	<p><textarea id="text" rows="7" cols="50"></textarea></p>
+<!--  {{  form|as_bootstrap  }} -->
+
+<div class='formactions'>
+	<button type='submit' class='btn btn-primary'>Prześlij wiersz</button>
+</div>
+<!--<input type = 'submit' name = 'submit' value = 'Napisz wiersz'>-->
+
+</form>
+
+{%  endblock  %}
