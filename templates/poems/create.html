@@ -10,11 +10,19 @@
 {%  block content  %}
 <h1>Napisz wiersz:</h1>
 
+{% if message_to_not_user %}
+    {{  message_to_not_user  }}<a href='/accounts/login/'>Zaloguj się.</a> lub <a href='/accounts/register/'>Załóż konto.</a>
+{%  endif  %}
+
+{% if message %}
+    {{  message  }}
+{%  endif  %}
+
 <form action = '/poems/create/' method = 'post'>{%  csrf_token  %}
     <label for='title'>Tytuł</label>
-    <p><input type="text" id="title"></p>
+    <p><input type="text" name="poems_title" id="title"></p>
 	<label for="text">Tekst</label>
-	<p><textarea id="text" rows="7" cols="50"></textarea></p>
+	<p><textarea id="text" name="poems_text" rows="7" cols="50"></textarea></p>
 <!--  {{  form|as_bootstrap  }} -->
 
 <div class='formactions'>
