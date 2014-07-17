@@ -17,7 +17,7 @@ def poem(request, dupa = 1):
 
 
 
-def comment(request, poem_id):
+def comment(request, poem_id): # 403 Forbidden CSRF validation failed - ??
 	if poem_id:
 		if request.method == 'POST':
 			title = request.POST.get('title')
