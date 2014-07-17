@@ -44,7 +44,7 @@ def create(request):
 		a = request.POST.get('poems_title')
 		b = request.POST.get('poems_text')
 		if request.user.is_authenticated():
-			if a and b is not None: # do poprawki
+			if a and b is not None: # need to fix it.
 				di = {}
 				di.update(csrf(request))
 				poem = Poem.objects.create(title = a, text = b)
