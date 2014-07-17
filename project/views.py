@@ -21,9 +21,7 @@ def auth_views(request):
 	else:
 		return HttpResponseRedirect('/accounts/invalid')
 
-#def create_user(request):
-#	nzw 
-		
+	
 def loggedin(request):
 	return render_to_response('loggedin.html', {'full_name': request.user.username})	
 	
