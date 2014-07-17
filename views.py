@@ -2,7 +2,6 @@
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
-from django.contrib.sessions.models import Session
 from django.contrib import auth
 
 
