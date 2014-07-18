@@ -11,8 +11,8 @@ from poems.models import Poem, Comment, Stropha
 def poems(request):
     return render_to_response('poems/poems.html', {'poems':Poem.objects.all().order_by('like').reverse()})	
 
-def poem(request, dupa = 1):
-	return render_to_response('poems/poem.html', {'poem':Poem.objects.get(id = dupa) })
+def poem(request, poem_id = 1):
+	return render_to_response('poems/poem.html', {'poem':Poem.objects.get(id = poem_id) })
 
 
 
