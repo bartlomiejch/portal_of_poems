@@ -13,27 +13,33 @@ def poems(request):
     return render_to_response('poems/poems.html', {'poems':Poem.objects.all().order_by('like').reverse()})	
 
 def poem(request, poem_id = 1):
-	return render_to_response('poems/poem.html', {'poem':Poem.objects.get(id = poem_id) })
+	args = {}
+	poem = Poem.objects.get(id = poem_id)
+	args['poem'] = poem
+	all_comments = poem.comment_set.all()
+	args['all_comments'] = all_comments
+	args.update(csrf(request))
+	return render_to_response('poems/poem.html', args)
 
 
 
-def comment(request, poem_id): # 403 Forbidden CSRF validation failed - ??
+def comment(request, poem_id): 
 	if poem_id:
 		if request.method == 'POST':
 			title = request.POST.get('title')
 			text_of_comment = request.POST.get('text_of_comment')
 			nick = request.POST.get('nick')
-			comment = Comment.objects.create(title = title, text = text_of_comment, nick = nick, poem = poem_id)
+			comment = Comment.objects.create(title = title, text = text_of_comment, nick = nick, poem = Poem.objects.get(id=poem_id))
 			comment.save()
 			comments = Poem.objects.get(id = poem_id)
-			all_comments = comments.poem_set.all()
+			all_comments = comments.comment_set.all()
 			args = {}
 			args.update(csrf(request))
 			args['all_comments'] = all_comments
 			return HttpResponseRedirect('/poems/get/%s' % poem_id, args)
 		else:
 			comments = Poem.objects.get(id = poem_id)
-			all_comments = comments.poem_set.all()
+			all_comments = comments.comment_set.all()
 			args = {}
 			args.update(csrf(request))
 			args['all_comments'] = all_comments
