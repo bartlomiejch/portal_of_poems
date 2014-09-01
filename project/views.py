@@ -11,9 +11,9 @@ def login(request):
 	return render_to_response('login.html', c)
 	
 def auth_views(request):
-	nzw = request.POST.get('username','')
-	haslo = request.POST.get('password','')	
-	user = auth.authenticate(username=nzw, password=haslo)
+	username = request.POST.get('username','')
+	password = request.POST.get('password','')	
+	user = auth.authenticate(username=username, password=password)
     
 	if user is not None:
 		auth.login(request, user)
